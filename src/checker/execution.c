@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execution_bonus.c                                  :+:      :+:    :+:   */
+/*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmorita <hmorita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 03:37:48 by hmorita           #+#    #+#             */
-/*   Updated: 2025/12/27 19:22:16 by hmorita          ###   ########.fr       */
+/*   Updated: 2025/12/30 15:48:56 by hmorita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker_bonus.h"
+#include "checker.h"
 
 bool	execute_operation(t_stack *stk_a, t_stack *stk_b, char *op)
 {

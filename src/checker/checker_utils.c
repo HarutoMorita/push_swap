@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker_util_bonus.c                               :+:      :+:    :+:   */
+/*   checker_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmorita <hmorita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 05:19:38 by hmorita           #+#    #+#             */
-/*   Updated: 2025/12/27 17:47:11 by hmorita          ###   ########.fr       */
+/*   Updated: 2025/12/30 15:48:48 by hmorita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker_bonus.h"
+#include "checker.h"
 
 void	free_all(t_stack **stk, char **strs, bool is_split)
 {

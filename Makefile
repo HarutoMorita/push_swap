@@ -1,13 +1,12 @@
-NAME := push_swap
-BONUS_NAME := checker
+PUSH_SWAP_NAME := push_swap
+CHECKER_NAME := checker
 
 LIBFT_DIR := libft/
 LIBFT_NAME := libft.a
-
-LIBFT_DIR     := libft/
 LIBFT_INC_DIR := libft/include/
-LIBFT_INCLUDE := -I $(LIBFT_INC_DIR)
-INCLUDES      := -I . $(LIBFT_INCLUDE)
+
+INCLUDE_DIR := include/
+INCLUDE := -I $(INCLUDE_DIR) -I $(LIBFT_INC_DIR)
 
 CC := cc
 CFLAGS := -Wall -Wextra -Werror
@@ -18,66 +17,67 @@ YELLOW := \033[33m
 RED    := \033[31m
 RESET  := \033[0m
 
-COMMON_SRCS := stack_operations.c \
-		stack_management.c \
-		stack_utils.c \
-		stack_utils2.c \
-		sort.c \
-        sort_small_cases.c \
-		chunk_sort.c \
-		sort_utils.c \
-		advanced_operations.c \
-		chunk_management.c \
-        argument_management.c
+SRC_DIR := src/
+OBJ_DIR := obj/
 
-MAIN_SRC := main.c
+STACK_SRC := stack/stack_operations.c \
+             stack/stack_management.c \
+             stack/stack_utils.c \
+             stack/stack_utils2.c
 
-BONUS_SRCS := checker_bonus.c \
-              execution_bonus.c \
-			  checker_util_bonus.c \
-			  get_next_line_bonus.c \
-			  get_next_line_utils_bonus.c
+SORT_SRC := sort/sort.c \
+            sort/sort_small_cases.c \
+            sort/chunk_sort.c \
+            sort/sort_utils.c \
+            sort/advanced_operations.c \
+            sort/chunk_management.c
 
-OBJS := $(SRCS:.c=.o) $(MAIN_SRC:.c=.o)
-BONUS_OBJS := $(SRCS:.c=.o) $(BONUS_SRCS:.c=.o)
+MAIN_SRC := main/main.c
 
-ifdef WITH_BONUS
-    SRCS    := $(COMMON_SRCS) $(BONUS_SRCS)
-    TARGET  := $(BONUS_NAME)
-else
-    SRCS    := $(COMMON_SRCS) $(MAIN_SRC)
-    TARGET  := $(NAME)
-endif
+UTILS_SRC := utils/argument_management.c
 
-OBJS := $(SRCS:.c=.o)
-ALL_OBJS    := $(COMMON_SRCS:.c=.o) $(MAIN_SRC:.c=.o) $(BONUS_SRCS:.c=.o)
+CHECK_SRC := checker/checker.c \
+             checker/execution.c \
+             checker/checker_utils.c \
+             checker/get_next_line_bonus.c \
+             checker/get_next_line_utils_bonus.c
 
+COMMON_SRCS := $(addprefix $(SRC_DIR), $(STACK_SRC) $(SORT_SRC) $(UTILS_SRC))
 
+PUSH_SWAP_SRCS := $(COMMON_SRCS) $(addprefix $(SRC_DIR), $(MAIN_SRC))
+CHECKER_SRCS   := $(COMMON_SRCS) $(addprefix $(SRC_DIR), $(CHECK_SRC))
 
+PUSH_SWAP_OBJS := $(PUSH_SWAP_SRCS:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
+CHECKER_OBJS   := $(CHECKER_SRCS:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 
-all: $(TARGET)
+all: $(PUSH_SWAP_NAME)
 
-$(TARGET): $(OBJS)
+$(PUSH_SWAP_NAME): $(PUSH_SWAP_OBJS)
 	@$(MAKE) -C $(LIBFT_DIR)
-	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -o $(TARGET)
-	@echo "$(GREEN)Successfully built $(TARGET)!$(RESET)"
+	$(CC) $(CFLAGS) $(PUSH_SWAP_OBJS) -L$(LIBFT_DIR) -lft -o $(PUSH_SWAP_NAME)
+	@echo "$(GREEN)Successfully built $(PUSH_SWAP_NAME)!$(RESET)"
 
-%.o: %.c
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+checker: $(CHECKER_NAME)
 
-bonus:
-	@$(MAKE) WITH_BONUS=1 all
+$(CHECKER_NAME): $(CHECKER_OBJS)
+	@$(MAKE) -C $(LIBFT_DIR)
+	$(CC) $(CFLAGS) $(CHECKER_OBJS) -L$(LIBFT_DIR) -lft -o $(CHECKER_NAME)
+	@echo "$(GREEN)Successfully built $(CHECKER_NAME)!$(RESET)"
+
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
 	@$(MAKE) -C $(LIBFT_DIR) clean
-	$(RM) $(ALL_OBJS)
+	$(RM) $(OBJ_DIR)
 	@echo "$(RED)Objects removed.$(RESET)"
 
 fclean: clean
 	@$(MAKE) -C $(LIBFT_DIR) fclean
-	$(RM) $(NAME) $(BONUS_NAME)
+	$(RM) $(PUSH_SWAP_NAME) $(CHECKER_NAME)
 	@echo "$(RED)Executables removed.$(RESET)"
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re checker

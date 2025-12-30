@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker_bonus.c                                    :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmorita <hmorita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 02:33:55 by hmorita           #+#    #+#             */
-/*   Updated: 2025/12/27 19:54:01 by hmorita          ###   ########.fr       */
+/*   Updated: 2025/12/30 15:48:52 by hmorita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker_bonus.h"
+#include "checker.h"
 
 static bool	checker(t_stack *stk_a, t_stack *stk_b)
 {
