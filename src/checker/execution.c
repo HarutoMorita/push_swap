@@ -6,7 +6,7 @@
 /*   By: hmorita <hmorita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 03:37:48 by hmorita           #+#    #+#             */
-/*   Updated: 2025/12/30 15:48:56 by hmorita          ###   ########.fr       */
+/*   Updated: 2025/12/30 16:34:24 by hmorita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ bool	execute_operation(t_stack *stk_a, t_stack *stk_b, char *op)
 
 bool	execute_swap(t_stack *stk_a, t_stack *stk_b, char *op)
 {
-	if (ft_strncmp(op, "sa\n", 3) == 0 || (op[2] == '\n' || op[2] == '\0'))
+	if (ft_strncmp(op, "sa\n", 3) == 0)
 		op_swap(stk_a, A);
-	else if (ft_strncmp(op, "sb\n", 3) == 0 || op[2] == '\n')
+	else if (ft_strncmp(op, "sb\n", 3) == 0)
 		op_swap(stk_b, B);
-	else if (ft_strncmp(op, "ss\n", 3) == 0 || op[2] == '\n')
+	else if (ft_strncmp(op, "ss\n", 3) == 0)
 		op_both(stk_a, stk_b, op_swap, AB);
 	else
 		return (false);
