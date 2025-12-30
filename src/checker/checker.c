@@ -6,7 +6,7 @@
 /*   By: hmorita <hmorita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 02:33:55 by hmorita           #+#    #+#             */
-/*   Updated: 2025/12/30 15:48:52 by hmorita          ###   ########.fr       */
+/*   Updated: 2025/12/30 16:09:42 by hmorita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ static bool	checker(t_stack *stk_a, t_stack *stk_b)
 			break ;
 		if (!execute_operation(stk_a, stk_b, input))
 		{
+			write(2, "Error\n", 6);
 			free(input);
+			get_next_line(-1);
 			return (false);
 		}
 		free(input);
