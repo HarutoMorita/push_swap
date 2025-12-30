@@ -21,7 +21,7 @@ The `checker` program receives a list of integers as command line arguments too,
 To compile the program, run these commands at the root directory.
 ```bash
 make          # Compile push_swap.
-make checker  # Compile checker.
+make check  # Compile checker.
 make clean    # Remove object files.
 make fclean   # Remove object files and executables.
 make re       # Re-compile push_swap.
@@ -168,6 +168,6 @@ https://github.com/o-reo/push_swap_visualizer
 - **Algorithm Selection**:\
   AI gave me advice for selecting the algorithm to sort by listing up pro and cons of radix sort, turk sort and chunk sort.
 - **Code Refinement**:\
-  AI helped in detecting logical error and potential memory leak that I overlooked, and calculating the optimal range of chunk size to test.
+  AI helped in detecting logical errors and potential memory leaks(and causes of them) that I overlooked, and calculating the optimal range of chunk size to test.
 - **Document Outline**:\
   AI assisted in outlining this README to make sure that it meets the project's requirements.

@@ -39,8 +39,8 @@ UTILS_SRC := utils/argument_management.c
 CHECK_SRC := checker/checker.c \
              checker/execution.c \
              checker/checker_utils.c \
-             checker/get_next_line_bonus.c \
-             checker/get_next_line_utils_bonus.c
+             checker/get_next_line.c \
+             checker/get_next_line_utils.c
 
 COMMON_SRCS := $(addprefix $(SRC_DIR), $(STACK_SRC) $(SORT_SRC) $(UTILS_SRC))
 
@@ -57,7 +57,7 @@ $(PUSH_SWAP_NAME): $(PUSH_SWAP_OBJS)
 	$(CC) $(CFLAGS) $(PUSH_SWAP_OBJS) -L$(LIBFT_DIR) -lft -o $(PUSH_SWAP_NAME)
 	@echo "$(GREEN)Successfully built $(PUSH_SWAP_NAME)!$(RESET)"
 
-checker: $(CHECKER_NAME)
+check: $(CHECKER_NAME)
 
 $(CHECKER_NAME): $(CHECKER_OBJS)
 	@$(MAKE) -C $(LIBFT_DIR)
