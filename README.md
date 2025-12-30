@@ -21,7 +21,7 @@ The `checker` program receives a list of integers as command line arguments too,
 To compile the program, run these commands at the root directory.
 ```bash
 make          # Compile push_swap.
-make check  # Compile checker.
+make check    # Compile checker.
 make clean    # Remove object files.
 make fclean   # Remove object files and executables.
 make re       # Re-compile push_swap.
